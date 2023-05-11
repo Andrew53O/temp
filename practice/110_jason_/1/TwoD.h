@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-using TD 
+namespace TD
 {
     class TwoD
     {
@@ -20,7 +20,7 @@ using TD
         void output();
 
         // operator overloading
-        friend const TwoD operator = (TwoD& array1, TwoD& array2);
+        const TwoD operator = (TwoD& array);
         friend const TwoD operator + (TwoD& array1, TwoD& array2);
 
         // desctructor
@@ -32,3 +32,5 @@ using TD
         int c;
     };
 }
+
+#endif

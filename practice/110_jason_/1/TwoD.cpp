@@ -16,13 +16,13 @@ namespace TD
     
     TwoD::TwoD(int row, int col)
     {
-        r = rol;
+        r = row;
         c = col;
     }
 
     void  TwoD::input()
     {
-        int ro, co
+        int ro, co;
         cout << "Enter the row and column dimensions of the array" << endl;
         cin >> ro >> co;
 
@@ -43,12 +43,12 @@ namespace TD
         }
 
         // prompt input
-        cout << "Enter " << rol << " rows of " << col << " integers each" << endl;
+        cout << "Enter " << row << " rows of " << col << " integers each" << endl;
 
 
         for (int i = 0; i < col; i++)
         {
-            for (int j = 0; j < rol; j++)
+            for (int j = 0; j < row; j++)
             {
                 cin >> p[i][j];
             }
@@ -58,11 +58,11 @@ namespace TD
         
     }
 
-    void output()
+    void TwoD::output()
     {
-        for (int i = 0; i < row; i++)
+        for (int i = 0; i < r; i++)
         {
-            for (int j = 0; j < col; j++)
+            for (int j = 0; j < c; j++)
             {
                 cout << p[i][j];
             }
@@ -72,25 +72,22 @@ namespace TD
     }
 
 
-
-    const TwoD operator = (TwoD& array1, TwoD& array2)
+    // member function overload
+    const TwoD TwoD::operator =(TwoD& array)
     {
-        for (int i = 0; i < row; i++)
-        {
-            for (int j = 0; j < col; j++)
-            {
-                array1[i][j] = array2[i][j];
-            }
-        }
-        return array1;
+         
     }
+
+    // friend overload
     const TwoD operator + (TwoD& array1, TwoD& array2)
     {
+        int row = array1.r;
+        int col = array1.c;
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < col; j++)
             {
-                array1[i][j] += array2[i][j];
+                array1.p[i][j] += array2.p[i][j];
             }
         }
         return array1;
@@ -99,7 +96,7 @@ namespace TD
     // desctructor
     TwoD::~TwoD()
     {
-        for (int i = 0; i < row; i++)
+        for (int i = 0; i < r; i++)
         {
             delete[] p[i];
         }
